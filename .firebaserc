@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "samples-41aed"
+  },
+  "targets": {
+    "samples-41aed": {
+      "hosting": {
+        "index-pokemon": [
+          "index-pokemon"
+        ]
+      }
+    }
+  }
+}
