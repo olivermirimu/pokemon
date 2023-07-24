@@ -1,4 +1,5 @@
 const path = require("path");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const HtmlWbpackPlugin = require("html-webpack-plugin");
 const { DefinePlugin } = require("webpack");
 const env = require("dotenv").config({
@@ -54,10 +55,16 @@ module.exports = {
     static: path.join(__dirname, "./dist"),
   },
   plugins: [
+    new NodePolyfillPlugin(),
     new HtmlWbpackPlugin({
       template: "./public/index.html",
       filename: "index.html",
     }),
     new DefinePlugin(envKeys),
   ],
+  resolve: {
+    fallback: {
+      crypto: require.resolve("crypto-browserify"),
+    },
+  },
 };
